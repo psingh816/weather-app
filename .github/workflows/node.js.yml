@@ -18,7 +18,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag pinkysingh/app-repo/react-weatherapp:$(date +%s)
     - name: Tag the Docker image
-      run: docker  --tag pinkysingh/app-repo/react-weatherapp:$(date +%s)    
-       docker tag pinkysingh/app-repo/react-weatherapp:$(date +%s) pinkysingh/app-repo/react-weatherapp:$IMAGE_TAG 
+      run: |
+        docker tag pinkysingh/app-repo/react-weatherapp:$(date +%s) pinkysingh/app-repo/react-weatherapp:$IMAGE_TAG 
     - name: Docker Push
       run: docker push pinkysingh/app-repo/react-weatherapp:$IMAGE_TAG
