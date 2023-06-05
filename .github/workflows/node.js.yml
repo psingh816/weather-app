@@ -20,4 +20,4 @@ jobs:
     - name: List Docker Images
       run: docker images
     - name: Docker Push
-      run: docker push pinkysingh/app-repo/react-weatherapp
+      run: docker image push pinkysingh/app-repo/react-weatherapp
