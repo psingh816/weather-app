@@ -1,23 +1,24 @@
-name: Docker Image CI
+---
+name: ci
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 jobs:
-  build:
-    env:
-      IMAGE_TAG: ${{ github.run_number }}  
+  docker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: docker login
-      env:
-        DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag pinkysingh/app-repo/react-weatherapp
-    - name: List Docker Images
-      run: docker images
-    - name: Docker Push
-      run: docker image push pinkysingh/app-repo/react-weatherapp
+      - name: code checkout
+        uses: actions/checkout@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push to docker hub
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: pinkysingh/reactweatherapp:latest, pinkysingh/reactweatherapp:latest:${{
+            github.run_number }}
