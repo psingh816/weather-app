@@ -10,7 +10,6 @@ jobs:
     env:
       DOCKER_REPOSITORY: pinkysingh/app-repo
       IMAGE_NAME: react-weatherapp
-      DOCKER_USERNAME: PinkySingh
       IMAGE_TAG: ${{ github.run_number }}
     steps:
       - name: Git Checkout
