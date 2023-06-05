@@ -26,8 +26,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push Image to Docker Hub
-        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
-        with:
-          context: .
-          push: true
-          tags: ${{ github.run_number }}
+        run: |
+          docker push pinkysingh/app-repo:$GITHUB_RUN_NUMBER
