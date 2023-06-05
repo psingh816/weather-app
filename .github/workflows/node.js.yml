@@ -27,4 +27,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push Image to Docker Hub
         run: |
-          docker push pinkysingh/app-repo:$GITHUB_RUN_NUMBER
+          docker push pinkysingh/app-repo/react-weatherapp:$GITHUB_RUN_NUMBER
