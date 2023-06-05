@@ -16,11 +16,8 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag pinkysingh/app-repo/react-weatherapp:$(date +%s)
+      run: docker build . --file Dockerfile --tag pinkysingh/app-repo/react-weatherapp
     - name: List Docker Images
-      run: docker images  
-    - name: Tag the Docker image
-      run: |
-        docker tag pinkysingh/app-repo/react-weatherapp:$(date +%s) pinkysingh/app-repo/react-weatherapp:$IMAGE_TAG 
+      run: docker images
     - name: Docker Push
       run: docker push pinkysingh/app-repo/react-weatherapp:$IMAGE_TAG
