@@ -8,7 +8,7 @@ const Container = styled(Box)({
 });
 
 const Input = styled(InputBase)({
-    color: '#FFF',
+    color: 'red',
     marginRight: 20,
     fontSize: 18
 });
