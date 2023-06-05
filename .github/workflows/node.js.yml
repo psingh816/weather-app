@@ -4,6 +4,8 @@ on:
     branches: [ main ]
 jobs:
   build:
+    env:
+      IMAGE_TAG: ${{ github.run_number }}  
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -15,6 +17,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag pinkysingh/app-repo/react-weatherapp:$(date +%s)
-      
+    - name: Tag the Docker image
+      run: docker  --tag pinkysingh/app-repo/react-weatherapp:$(date +%s)    
+       docker tag pinkysingh/app-repo/react-weatherapp:$(date +%s) pinkysingh/app-repo/react-weatherapp:$IMAGE_TAG 
     - name: Docker Push
-      run: docker push pinkysingh/app-repo/react-weatherapp:$(date +%s)
+      run: docker push pinkysingh/app-repo/react-weatherapp:$IMAGE_TAG
