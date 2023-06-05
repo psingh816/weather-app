@@ -17,4 +17,4 @@ jobs:
       run: docker build . --file Dockerfile --tag pinkysingh/app-repo/react-weatherapp:$(date +%s)
       
     - name: Docker Push
-      run: docker push pinkysingh/app-repo/react-weatherapp
+      run: docker push pinkysingh/app-repo/react-weatherapp:$(date +%s)
