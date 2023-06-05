@@ -12,17 +12,17 @@ jobs:
       IMAGE_NAME: react-weatherapp
       IMAGE_TAG: ${{ github.run_number }}	
     steps:
-    - name: Git Checkout
-      uses: actions/checkout@v2
+      - name: Git Checkout
+        uses: actions/checkout@v2
 	  
-    - name: Build the Docker image
-      run: |
-		docker build . --file Dockerfile --tag $DOCKER_REPOSITORY/$IMAGE_NAME:$GITHUB_RUN_NUMBER --no-cache		
+      - name: Build the Docker image
+        run: |
+	  docker build . --file Dockerfile --tag $DOCKER_REPOSITORY/$IMAGE_NAME:$GITHUB_RUN_NUMBER --no-cache		
 
-    - name: Login to Docker Hub
-      run: |
-        echo "${{ secrets.DOCKER_REPOSITORY_PASSWORD }}" | docker login -u $DOCKER_REPOSITORY --password-stdin
+      - name: Login to Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_REPOSITORY_PASSWORD }}" | docker login -u $DOCKER_REPOSITORY --password-stdin
   
-    - name: Push Image to Docker Hub
-      run:|
-        docker push $DOCKER_REPOSITORY/$IMAGE_NAME:$GITHUB_RUN_NUMBER
+      - name: Push Image to Docker Hub
+        run:|
+          docker push $DOCKER_REPOSITORY/$IMAGE_NAME:$GITHUB_RUN_NUMBER
