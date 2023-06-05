@@ -27,4 +27,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push Image to Docker Hub
         run: |
-          docker push $DOCKER_REPOSITORY/$IMAGE_NAME:$GITHUB_RUN_NUMBER
+          docker push $DOCKER_REPOSITORY:$IMAGE_NAME-$GITHUB_RUN_NUMBER
