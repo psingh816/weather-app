@@ -8,9 +8,9 @@ const Container = styled(Box)({
 });
 
 const Input = styled(InputBase)({
-    color: 'red',
+    color: 'white',
     marginRight: 20,
-    fontSize: 18
+    fontSize: 26
 });
 
 const GetButton = styled(Button)({
