@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: weatherapp
-          image: pinkysingh/reactweatherapp:latest
+          image: pinkysingh/reactweatherapp:{{GIT_SHA}}
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
