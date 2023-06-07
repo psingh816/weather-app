@@ -12,7 +12,7 @@ const Row = styled(Typography)({
 });
 
 const Error = styled(Typography)({
-    color: 'red',
+    color: 'white',
     margin: 50,
     padding: 20
 })
@@ -30,7 +30,7 @@ const Information = ({ result }) => {
             <Row><Dehaze />Humidity: {result.weather[0].main}</Row>
             <Row><Cloud />Clouds: {result.clouds.all}%</Row>
         </Box>
-        : <Error>Please enter the values to check weather</Error>
+        : <Error> Check weather</Error>
     )
 }
 
