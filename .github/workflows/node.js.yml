@@ -1,8 +1,9 @@
 ---
-name: cicd
+name: ci
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -15,5 +16,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and push to docker hub
-        uses
-          kubectl apply -f service.yaml          
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: pinkysingh/reactweatherapp:latest
