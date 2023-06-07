@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: weatherapp
-          image: 
+          image: pinkysingh/reactweatherapp:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
