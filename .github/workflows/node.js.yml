@@ -1,5 +1,5 @@
 ---
-name: cicd
+name: cicd-pipeline
 on:
   push:
     branches:
